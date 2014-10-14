@@ -1,0 +1,53 @@
+#dialog_right_pane dt {
+    font-weight:bold;
+}
+
+#dialog_right_pane table { border-collapse: collapse; border: solid thick; }
+#dialog_right_pane colgroup, #dialog_right_pane tbody, #dialog_right_pane thead { border: solid medium; }
+#dialog_right_pane td, #dialog_right_pane th { border: solid thin; text-align: center; padding: 0.25em; }
+#dialog_right_pane span, #dialog_right_pane table a { font-size: smaller; }
+
+
+#map {
+    width: 1024px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+.jqplot-target {
+    position: relative;
+    color: #B6B6B6;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.jqplot-axis {
+    font-size: 0.75em;
+}
+
+.jqplot-xaxis {
+    margin-top: 10px;
+}
+
+.jqplot-yaxis {
+    margin-right: 10px;
+}
+
+table.jqplot-cursor-tooltip {
+    border: 1px solid #cccccc;
+    font-size: 0.75em;
+}
+
+.jqplot-cursor-tooltip {
+    border: 1px solid #cccccc;
+    font-size: 0.75em;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 1);
+    padding: 1px;
+}
+
+.jqplot-yaxis-tick {
+    left: 20px;
+}
+
+.ui-dialog { z-index: 10000 !important ;}

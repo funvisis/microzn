@@ -1,0 +1,37 @@
+{
+  "name": "microzn",
+  "version": "1.0.0",
+  "homepage": "https://github.com/funvisis/microzn",
+  "authors": [
+    "Jesús Gómez <jgomez@funvisis.gob.ve>"
+  ],
+  "description": "Aplicación que muestra un mapa que representa la microzonificación de algua población y permite al usuario consultar los espéctros elásticos e inelásticos",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "microzonificación",
+    "sig",
+    "graph",
+    "spectrum"
+  ],
+  "license": "CC-BY-NC-SA-4.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "jquery-ui": "~1.11.0",
+    "openlayers": "release-2.13.1",
+    "jquery.jqplot.1.0.8r1250.tar": "https://bitbucket.org/cleonello/jqplot/downloads/jquery.jqplot.1.0.8r1250.tar.gz",
+    "requirejs": "~2.1.14",
+    "FileSaver.js": "https://github.com/eligrey/FileSaver.js.git",
+    "Blob.js": "https://github.com/eligrey/Blob.js.git",
+    "text": "~2.0.12"
+  }
+}

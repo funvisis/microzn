@@ -1,0 +1,23 @@
+{
+  "name": "Demo microzn",
+  "version": "1.0.0",
+  "homepage": "https://github.com/funvisis/microzn/demo",
+  "authors": [
+    "Jesús Gómez <jgomo3@gmail.com>"
+  ],
+  "description": "Página de demostración que incluye el plugin microzn.",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "microzn": "../"
+  }
+}

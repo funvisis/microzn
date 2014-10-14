@@ -1,0 +1,176 @@
+<h2>Haga clic en una zona del mapa</h2>
+<p> En el mapa puede apreciar unas regiones diferenciadas por
+  colores. Cada una de esas regiones es una "microzona".</p>
+<p> Al hacer clic en alguna de esas microzonas, podrá observar el
+  "espectro" asociado a esa microzona.</p>
+
+<div id="map"></div> 
+
+<div id="dialog" style="display: none">
+<div id="dialog_left_pane">
+  <h3>Microzona: <span id="mzid"></span></h3>
+  <div id="slope_div">
+    <label>Inclinación</label>&nbsp;
+    <select id="slope_select">
+      <option value="T0">T0</option>
+      <option value="T1">T1</option>
+      <option value="T2">T2</option>
+    </select>
+  </div>
+  <div id="building_group_div">
+    <label>Grupo de la Edificación</label>
+    <select id="building_group_select">
+      <option value="A">A</option>
+      <option value="B1">B1</option>
+      <option value="B2">B2</option>
+    </select>
+  </div>
+  <div id="reduction_factor_div">
+    <label>Factor de reducción</label>
+    <input type="number" id="reduction_factor_input" name="reduction_factor_input" value="1" min="1.0" max="6.0" step="0.05" placeholder="Ingrese un número entre 1 y 6"/>
+  </div>
+  <div id="attribute_table">
+    <table style="padding-left: 15px">
+      <tr>
+	<td>&phi;</td><td> = </td><td id="val_phi">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>&beta;</td><td> = </td><td id="val_beta">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>A<sub>0</sub></td><td> = </td><td id="val_a0">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>T<sub>A</sub></td><td> = </td><td id="val_ta">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>T<sub>0</sub></td><td> = </td><td id="val_t0">0.234</td>
+      </tr>
+      <tr>
+	<td>T<sup>*</sup></td><td> = </td><td id="val_tstar">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>T<sub>D</sub></td><td> = </td><td id="val_td">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>m</td><td> = </td><td id="val_m">0.324</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>p</td><td> = </td><td id="val_p">0.324</td><td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+      </tr>
+    </table>
+  </div>
+  <h3>Gráfica del espectro</h3>
+  <div id="chartdiv" style="height:300px;width:500px; "></div>
+  <div id="scale_div">
+    <label>Escala</label>
+    <select id="scale_group_select">
+      <option value="linear">Lineal</option>
+      <option value="log">Logarítmica</option>
+    </select>
+  </div>
+  <form id="text-options">
+    <input type="submit" value="Exportar a CSV"/>
+  </form>
+</div>
+<div id="dialog_right_pane">
+  <h2>Parámetros</h2>
+  <h3>Inclinación</h3>
+  <p>El parámetro "Inclinación" está asociado a la inclinación del
+  terreno del cuál desea obtener el espectro.</p>
+  <p>Los posibles valores de este parámetro
+  son: <strong>T0</strong>, <strong>T1</strong>
+  y <strong>T2</strong>. Estos valores representan las categorías de
+  inclinación que utilizamos en el cálculo.</p>
+  <p>Usted debe conocer esa inclinación del terreno y elegir la
+  categoría adecuadamente.</p>
+  <h4>Las categorías</h4>
+  <p>Pendientes de ...</p>
+  <dl>
+    <dt>T0</dt>
+    <dd>Menos de 40% ( < 22º)</dd>
+    <dt>T1</dt>
+    <dd>Entre 40% y 75% (22º - 37º)</dd>
+    <dt>T2</dt>
+    <dd>Más de 75% ( > 37º)</dd>
+  </dl>
+  <p><strong>Nota:</strong> Algunas veces, este parámetro no hace
+  falta, por lo que no podrá elegirlo.
+  <h3>Grupo de Edificación</h3>
+  <p>Según la Sección 6.1
+  de <a href="http://www.funvisis.gob.ve/archivos/pdf/normas/norma_covenin/covenin1756_2001.pdf">la
+  norma COVENIN 1756:2001</a>, las categorías son:</p>
+  <dl>
+    <dt>Grupo A</dt>
+    <dd>Edificaciones esenciales</dd>
+    <dt>Grupo B1</dt>
+    <dd>Edificaciones masivas</dd>
+    <dt>Grupo B2</dt>
+    <dd>Edificaciones comunes</dd>
+  </dl>
+  <h3>Factor de reducción</h3>
+  <p>Los factores de reducción también están definidos
+  en <a href="http://www.funvisis.gob.ve/archivos/pdf/normas/norma_covenin/covenin1756_2001.pdf">
+  la norma COVENIN 1756:2001</a>. Son valores que dependen
+  del <strong>Nivel de diseño</strong> y el <strong>Tipo de
+  estructura</strong>. Los valores están establecidos en la tabla 6.4
+  que se resume a continuación.</p>
+  <figure>
+    <figcaption><strong>Factores de reducción R</strong></figcaption>
+    <table>
+      <caption>Estructuras de concreto armado</caption>
+      <thead>
+	<tr><th rowspan="2">Nivel de diseño <th colspan="5">Tipo de estructura
+	<tr>
+	  <th>I
+	  <th>II
+	  <th>III
+	  <th>IIIa
+	  <th>IV
+      <tbody>
+	<tr> <td> ND3 <td> 6,0 <td> 5,0  <td> 4,5 <td> 5,0 <td> 2,0
+	<tr> <td> ND2 <td> 4,0 <td> 3,5  <td> 3,0 <td> 3,5 <td> 1,5
+	<tr> <td> ND1 <td> 2,0 <td> 1,75 <td> 1,0 <td> 2,0 <td> 1,25
+    </table>
+
+    <table>
+      <caption>Estructuras de acero</caption>
+      <thead>
+	<tr><th rowspan="2">Nivel de diseño <th colspan="5">Tipo de estructura
+	<tr>
+	  <th>I <a href="#footnote1">(1)</a>
+	  <th>II
+	  <th>III
+	  <th>IIIa
+	  <th>IV
+      <tbody>
+	<tr> <td> ND3 <td> 6,0 <a href="#footnote2">(2)</a><td> 5,0  <td> 4,0 <td> 6,0 <a href="#footnote3">(3)</a><td> 2,0
+	<tr> <td> ND2 <td> 4,5 <td> 4,0  <td>  -  <td>  -  <td> 1,5
+	<tr> <td> ND1 <td> 2,5 <td> 2,25 <td> 2,0 <td>  -  <td> 1,25
+    </table>
+    <ul>
+      <li><span id="footnote1">(1)</span> Para sistemas con columnas
+	articuladas en su base, el valor de R será multiplicado por
+	0,75.
+      <li><span id="footnote2">(2)</span> En pórticos con vigas de
+	celosía se usará 5,0 limitado a edificios de no más de 30
+	metros de altura.
+      <li><span id="footnote3">(3)</span> En aquellos casos donde la
+	conexión viga colectora-columna sea del Tipo PR, según la
+	norma COVENIN 1628-98, úsese 5,0.
+    </ul>
+    <table>
+      <caption>Estructuras de mixtas acero-concreto</caption>
+      <thead>
+	<tr><th rowspan="2">Nivel de diseño <th colspan="5">Tipo de estructura
+	<tr>
+	  <th>I
+	  <th>II
+	  <th>III
+	  <th>IIIa
+	  <th>IV
+      <tbody>
+	<tr> <td> ND3 <td> 6,0  <td> 5,0  <td> 4,0  <td> 6,0 <a href="#footnote4">(4)</a><td> 2,0
+	<tr> <td> ND2 <td> 4,0  <td> 4,0  <td>  -   <td>  -  <td> 1,5
+	<tr> <td> ND1 <td> 2,25 <td> 2,50 <td> 2,25 <td>  -  <td> 1,0
+    </table>
+    <ul>
+      <li><span id="footnote4">(4)</span> Para muros estructurales
+	reforzados con planchas de acero y miembros de borde de
+	sección mixta acero-concreto, úsese 5,0.
+    </ul>
+  </figure>
+</div>
+</div>
+<h3> ¿Qué es una microzona?¿Qué es el espectro asociado?</h3>
+<p> Puede comprender aún más de estos conceptos en la sección 6.4
+  del <a href="http://www.funvisis.gob.ve/microz_caracas.php"> Informe
+  Técnico del "Proyecto de Microzonificación Sísmica en las Ciudades
+  Caracas y Barquisimeto"</a>.</p>
