@@ -66,7 +66,7 @@ require(['microzn/scripts/microzonelib'], function(microzonelib) {
 	// URL del servicio WMS que ofrece los mapas de la
 	// microzonificación.
 
-	geoserver_url : 'http://geoserver-d7:8080/geoserver/funvisis/wms',
+	geoserver_url: 'http://geoserver:8080/geoserver/funvisis/wms',
 
 	// TODO: Cambiar el nombre del parámetro geoserver_url a wms_url
 
@@ -84,7 +84,7 @@ require(['microzn/scripts/microzonelib'], function(microzonelib) {
 	// hacer los cálculos.
 
 	microzone_layers : [
-	    ['Microzonas', 'funvisis:microzonas', 'microzona_id']
+	    ['Microzonas', 'funvisis:microzonas_ids', 'microzona_id']
             // ['Laderas', 'funvisis:laderas', 'amenaza'],
             // ['Sedimentos', 'funvisis:sedimentos', 'microzona'],
             // ['Amenaza General', 'funvisis:general', 'microzonas']
