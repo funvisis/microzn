@@ -84,7 +84,7 @@ require(['microzn/scripts/microzonelib'], function(microzonelib) {
 	// hacer los cálculos.
 
 	microzone_layers : [
-	    ['Microzonas', 'funvisis:microzonas_ids', 'microzona_id']
+	    ['Microzonas', 'funvisis:microzonas_ids', 'microzn_id']
             // ['Laderas', 'funvisis:laderas', 'amenaza'],
             // ['Sedimentos', 'funvisis:sedimentos', 'microzona'],
             // ['Amenaza General', 'funvisis:general', 'microzonas']
